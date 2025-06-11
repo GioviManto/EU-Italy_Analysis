@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italy's Economic Position: EU and Global Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: #fafafa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .chart-full {
+            grid-column: 1 / -1;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        tr:hover {
+            background: #e3f2fd;
+            transition: background 0.3s ease;
+        }
+        
+        .italy-highlight {
+            background: #fff3e0 !important;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            border-top: 4px solid #667eea;
+        }
+        
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .explanation {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        .explanation h3 {
+            color: #28a745;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇮🇹 Italy's Economic Position</h1>
+            <p>Comprehensive Analysis of Italy's Role in EU and Global Economy</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Italy's Position in the EU Economy</h2>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">#3</div>
+                        <div class="metric-label">EU Economy Rank</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">14.8%</div>
+                        <div class="metric-label">Share of EU GDP</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">€36,300</div>
+                        <div class="metric-label">GDP per Capita</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">13.1%</div>
+                        <div class="metric-label">EU Population Share</div>
+                    </div>
+                </div>
+                
+                <div class="insight-box">
+                    <strong>Key Insight:</strong> Italy represents the third-largest economy in the European Union, contributing nearly 15% of total EU GDP while housing 13% of the population. This positions Italy as a critical economic pillar of European integration, despite facing productivity challenges relative to Northern European peers.
+                </div>
+                
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <canvas id="euGdpShare"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="euGdpPerCapita"></canvas>
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>EU Country</th>
+                            <th>GDP (€ Trillion)</th>
+                            <th>GDP per Capita (€)</th>
+                            <th>Population (Million)</th>
+                            <th>EU GDP Share (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🇩🇪 Germany</td>
+                            <td>4.12</td>
+                            <td>49,200</td>
+                            <td>83.8</td>
+                            <td>27.6%</td>
+                        </tr>
+                        <tr>
+                            <td>🇫🇷 France</td>
+                            <td>2.79</td>
+                            <td>41,200</td>
+                            <td>67.8</td>
+                            <td>18.7%</td>
+                        </tr>
+                        <tr class="italy-highlight">
+                            <td>🇮🇹 <strong>Italy</strong></td>
+                            <td><strong>2.20</strong></td>
+                            <td><strong>36,300</strong></td>
+                            <td><strong>58.9</strong></td>
+                            <td><strong>14.8%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>🇪🇸 Spain</td>
+                            <td>1.46</td>
+                            <td>30,800</td>
+                            <td>47.4</td>
+                            <td>9.8%</td>
+                        </tr>
+                        <tr>
+                            <td>🇳🇱 Netherlands</td>
+                            <td>1.01</td>
+                            <td>57,300</td>
+                            <td>17.6</td>
+                            <td>6.8%</td>
+                        </tr>
+                        <tr>
+                            <td>🇵🇱 Poland</td>
+                            <td>0.68</td>
+                            <td>18,100</td>
+                            <td>37.7</td>
+                            <td>4.6%</td>
+                        </tr>
+                        <tr>
+                            <td>🇧🇪 Belgium</td>
+                            <td>0.53</td>
+                            <td>45,900</td>
+                            <td>11.5</td>
+                            <td>3.6%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="explanation">
+                    <h3>Understanding Italy's EU Economic Position</h3>
+                    <p>Italy's economic position within the EU reveals both strengths and challenges. As the third-largest economy, Italy contributes significantly to European economic output, yet its GDP per capita of €36,300 places it below the EU average of approximately €38,000. This gap reflects Italy's ongoing productivity challenges and regional disparities, particularly between the industrialized North and the less developed South.</p>
+                    
+                    <p>The comparison with peer economies is instructive: while Germany and France maintain higher GDP per capita figures, Italy's absolute economic size ensures its continued importance in EU decision-making and economic policy formation. Italy's manufacturing base, particularly in automotive, machinery, and luxury goods, provides critical supply chain links for the broader European economy.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Italy and EU in the Global Economy</h2>
+                
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <canvas id="globalGdpShare"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="globalComparison"></canvas>
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Economy</th>
+                            <th>GDP (USD Trillion)</th>
+                            <th>Global GDP Share (%)</th>
+                            <th>GDP per Capita (USD)</th>
+                            <th>Trade Share (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🇺🇸 United States</td>
+                            <td>26.95</td>
+                            <td>25.4%</td>
+                            <td>80,400</td>
+                            <td>11.8%</td>
+                        </tr>
+                        <tr>
+                            <td>🇨🇳 China</td>
+                            <td>17.73</td>
+                            <td>16.7%</td>
+                            <td>12,600</td>
+                            <td>13.2%</td>
+                        </tr>
+                        <tr>
+                            <td>🇪🇺 <strong>European Union</strong></td>
+                            <td><strong>16.64</strong></td>
+                            <td><strong>15.7%</strong></td>
+                            <td><strong>37,300</strong></td>
+                            <td><strong>15.6%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>🇯🇵 Japan</td>
+                            <td>4.24</td>
+                            <td>4.0%</td>
+                            <td>33,800</td>
+                            <td>3.8%</td>
+                        </tr>
+                        <tr>
+                            <td>🇩🇪 Germany</td>
+                            <td>4.46</td>
+                            <td>4.2%</td>
+                            <td>53,300</td>
+                            <td>7.4%</td>
+                        </tr>
+                        <tr>
+                            <td>🇮🇳 India</td>
+                            <td>3.74</td>
+                            <td>3.5%</td>
+                            <td>2,700</td>
+                            <td>2.1%</td>
+                        </tr>
+                        <tr>
+                            <td>🇬🇧 United Kingdom</td>
+                            <td>3.13</td>
+                            <td>2.9%</td>
+                            <td>46,300</td>
+                            <td>3.9%</td>
+                        </tr>
+                        <tr>
+                            <td>🇫🇷 France</td>
+                            <td>2.94</td>
+                            <td>2.8%</td>
+                            <td>43,500</td>
+                            <td>3.2%</td>
+                        </tr>
+                        <tr class="italy-highlight">
+                            <td>🇮🇹 <strong>Italy</strong></td>
+                            <td><strong>2.11</strong></td>
+                            <td><strong>2.0%</strong></td>
+                            <td><strong>35,800</strong></td>
+                            <td><strong>2.8%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>🇧🇷 Brazil</td>
+                            <td>2.05</td>
+                            <td>1.9%</td>
+                            <td>9,600</td>
+                            <td>1.2%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="insight-box">
+                    <strong>Global Context:</strong> Italy ranks as the 8th largest economy globally, representing 2.0% of world GDP. Within the context of the EU as a collective economic bloc (15.7% of global GDP), Italy contributes roughly 13% of the EU's global economic weight, making it a significant component of Europe's global economic influence.
+                </div>
+                
+                <div class="chart-container chart-full">
+                    <canvas id="tradeDynamics"></canvas>
+                </div>
+                
+                <div class="explanation">
+                    <h3>Italy's Global Economic Integration</h3>
+                    <p>Italy's position in the global economy reflects its role as a major industrialized nation with strong manufacturing capabilities and cultural exports. Representing 2.0% of global GDP, Italy punches above its weight in specific sectors such as luxury goods, automotive components, and machinery exports. The country's integration into global value chains is particularly evident in its automotive sector, where Italian suppliers serve major European and global manufacturers.</p>
+                    
+                    <p>When considered as part of the European Union's collective economic power, Italy's importance becomes even more apparent. The EU collectively represents the world's second-largest economic bloc after the United States, and Italy's contribution of nearly 13% of EU GDP makes it a crucial component of Europe's global economic influence. This positioning allows Italy to leverage both its national economic capabilities and its membership in the world's largest single market.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Sectoral Analysis: Italy's Economic Specialization</h2>
+                
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <canvas id="sectorComparison"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="exportStructure"></canvas>
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sector</th>
+                            <th>Italy GDP Share (%)</th>
+                            <th>EU Average (%)</th>
+                            <th>Italy's EU Rank</th>
+                            <th>Global Competitiveness</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Services</td>
+                            <td>74.2%</td>
+                            <td>73.8%</td>
+                            <td>7th</td>
+                            <td>Strong in Tourism, Finance</td>
+                        </tr>
+                        <tr class="italy-highlight">
+                            <td><strong>Manufacturing</strong></td>
+                            <td><strong>23.8%</strong></td>
+                            <td><strong>21.2%</strong></td>
+                            <td><strong>2nd</strong></td>
+                            <td><strong>Global Leader in Machinery, Automotive</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Agriculture</td>
+                            <td>2.0%</td>
+                            <td>1.8%</td>
+                            <td>4th</td>
+                            <td>Premium Food Products</td>
+                        </tr>
+                        <tr>
+                            <td>Construction</td>
+                            <td>4.5%</td>
+                            <td>5.1%</td>
+                            <td>8th</td>
+                            <td>Infrastructure, Design</td>
+                        </tr>
+                        <tr>
+                            <td>Energy</td>
+                            <td>3.2%</td>
+                            <td>4.8%</td>
+                            <td>12th</td>
+                            <td>Renewable Transition</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="explanation">
+                    <h3>Italy's Manufacturing Excellence</h3>
+                    <p>Italy's economic structure reveals a particularly strong manufacturing sector that represents 23.8% of GDP, significantly above the EU average of 21.2%. This manufacturing strength positions Italy as the second-largest manufacturing economy in the EU after Germany, and reflects the country's deep industrial heritage and continued innovation in traditional sectors.</p>
+                    
+                    <p>The manufacturing sector's prominence explains much of Italy's global trade performance and economic resilience. Italian manufacturers excel in machinery production, automotive components, fashion and luxury goods, and food processing—sectors that combine traditional craftsmanship with modern technology. This industrial base provides Italy with a competitive advantage in global markets and helps explain the country's significant trade surplus in manufactured goods.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Economic Outlook and Strategic Position</h2>
+                
+                <div class="chart-container chart-full">
+                    <canvas id="growthProjections"></canvas>
+                </div>
+                
+                <div class="insight-box">
+                    <strong>Strategic Outlook:</strong> Italy's economic position benefits from its central location in the Mediterranean, strong manufacturing base, and cultural assets that drive tourism. However, the country faces challenges from demographic decline, regional disparities, and the need for productivity improvements to maintain competitiveness within the EU and globally.
+                </div>
+                
+                <div class="explanation">
+                    <h3>Future Positioning and Challenges</h3>
+                    <p>Italy's economic future depends on successfully navigating several key transitions while leveraging its existing strengths. The country's position as a major EU economy provides both opportunities and responsibilities, as Italian economic performance significantly impacts broader European growth and stability.</p>
+                    
+                    <p>The ongoing digital transformation and green transition present both challenges and opportunities for Italy. The country's strong manufacturing base must adapt to new technologies and sustainability requirements, while its service sector can benefit from digitalization. Italy's receipt of €209 billion from the EU's NextGenerationEU fund represents a historic opportunity to modernize infrastructure, enhance productivity, and address long-standing regional disparities.</p>
+                    
+                    <p>Within the global context, Italy's membership in the G7 and G20, combined with its EU membership, positions the country as an influential voice in international economic governance. This multiple membership allows Italy to bridge different regional perspectives and contribute to global economic policy coordination.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart.js configurations with modern styling
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        Chart.defaults.color = '#333';
+        
+        // EU GDP Share Chart
+        const euGdpCtx = document.getElementById('euGdpShare').getContext('2d');
+        new Chart(euGdpCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Germany', 'France', 'Italy', 'Spain', 'Netherlands', 'Other EU'],
+                datasets: [{
+                    data: [27.6, 18.7, 14.8, 9.8, 6.8, 22.3],
+                    backgroundColor: [
+                        '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD'
+                    ],
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'EU GDP Share by Country (2024)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+
+        // EU GDP per Capita Chart
+        const euGdpPerCapitaCtx = document.getElementById('euGdpPerCapita').getContext('2d');
+        new Chart(euGdpPerCapitaCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Netherlands', 'Germany', 'France', 'Italy', 'Spain'],
+                datasets: [{
+                    label: 'GDP per Capita (€ thousands)',
+                    data: [57.3, 49.2, 41.2, 36.3, 30.8],
+                    backgroundColor: ['#FFEAA7', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4'],
+                    borderRadius: 8,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'GDP per Capita Comparison (€ thousands)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(0,0,0,0.1)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Global GDP Share Chart
+        const globalGdpCtx = document.getElementById('globalGdpShare').getContext('2d');
+        new Chart(globalGdpCtx, {
+            type: 'bar',
+            data: {
+                labels: ['USA', 'China', 'EU', 'Japan', 'Germany', 'India', 'UK', 'France', 'Italy', 'Brazil'],
+                datasets: [{
+                    label: 'Global GDP Share (%)',
+                    data: [25.4, 16.7, 15.7, 4.0, 4.2, 3.5, 2.9, 2.8, 2.0, 1.9],
+                    backgroundColor: [
+                        '#FF6B6B', '#FFD93D', '#6BCF7F', '#4ECDC4', '#FF6B6B', 
+                        '#96CEB4', '#FFEAA7', '#4ECDC4', '#45B7D1', '#DDA0DD'
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Global GDP Share - Major Economies (2024)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(0,0,0,0.1)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Global Comparison Chart
+        const globalCompCtx = document.getElementById('globalComparison').getContext('2d');
+        new Chart(globalCompCtx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Major Economies',
+                    data: [
+                        {x: 80400, y: 26.95, label: 'USA'},
+                        {x: 12600, y: 17.73, label: 'China'},
+                        {x: 37300, y: 16.64, label: 'EU'},
+                        {x: 33800, y: 4.24, label: 'Japan'},
+                        {x: 53300, y: 4.46, label: 'Germany'},
+                        {x: 2700, y: 3.74, label: 'India'},
+                        {x: 46300, y: 3.13, label: 'UK'},
+                        {x: 43500, y: 2.94, label: 'France'},
+                        {x: 35800, y: 2.11, label: 'Italy'},
+                        {x: 9600, y: 2.05, label: 'Brazil'}
+                    ],
+                    backgroundColor: [
+                        '#FF6B6B', '#FFD93D', '#6BCF7F', '#4ECDC4', '#FF6B6B',
+                        '#96CEB4', '#FFEAA7', '#4ECDC4', '#45B7D1', '#DDA0DD'
+                    ],
+                    pointRadius: 8,
+                    pointHoverRadius: 12
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'GDP vs GDP per Capita (2024)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const point = context.raw;
+                                return `${point.label}: $${point.x.toLocaleString()} per capita, $${point.y.toFixed(1)}T total`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        title: {
+                            display: true,
+                            text: 'GDP per Capita (USD)'
+                        },
+                        grid: { color: 'rgba(0,0,0,0.1)' }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Total GDP (USD Trillions)'
+                        },
+                        grid: { color: 'rgba(0,0,0,0.1)' }
+                    }
+                }
+            }
+        });
+
+        // Trade Dynamics Chart
+        const tradeCtx = document.getElementById('tradeDynamics').getContext('2d');
+        new Chart(tradeCtx, {
+            type: 'line',
+            data: {
+                labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [
+                    {
+                        label: 'Italy Trade Balance (€ Billion)',
+                        data: [43.2, 51.1, 52.3, 47.8, 45.2, 58.9, 63.8, 31.2, 14.7, 25.1, 28.4],
+                        borderColor: '#45B7D1',
+                        backgroundColor: 'rgba(69, 183, 209, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'EU Trade Balance (€ Billion)',
+                        data: [132.4, 198.2, 234.1, 198.7, 156.3, 187.9, 221.4, 165.8, 134.2, 156.7, 178.3],
+                        borderColor: '#6BCF7F',
+                        backgroundColor: 'rgba(107, 207, 127, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Trade Balance Evolution: Italy vs EU (2014-2024)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(0,0,0,0.1)' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Sector Comparison Chart
+        const sectorCtx = document.getElementById('sectorComparison').getContext('2d');
+        new Chart(sectorCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Manufacturing', 'Services', 'Agriculture', 'Tourism', 'Technology', 'Energy'],
+                datasets: [
+                    {
+                        label: 'Italy',
+                        data: [85, 70, 75, 95, 60, 55],
+                        borderColor: '#45B7D1',
+                        backgroundColor: 'rgba(69, 183, 209, 0.2)',
+                        pointBackgroundColor: '#45B7D1',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#45B7D1'
+                    },
+                    {
+                        label: 'EU Average',
+                        data: [75, 75, 65, 70, 80, 70],
+                        borderColor: '#96CEB4',
+                        backgroundColor: 'rgba(150, 206, 180, 0.2)',
+                        pointBackgroundColor: '#96CEB4',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#96CEB4'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Sectoral Competitiveness: Italy vs EU Average',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: 'rgba(0,0,0,0.1)' },
+                        angleLines: { color: 'rgba(0,0,0,0.1)' },
+                        pointLabels: { font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Export Structure Chart
+        const exportCtx = document.getElementById('exportStructure').getContext('2d');
+        new Chart(exportCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Machinery & Equipment', 'Automotive', 'Fashion & Textiles', 'Food & Beverages', 'Chemicals', 'Other'],
+                datasets: [{
+                    data: [21.3, 16.8, 14.2, 12.5, 11.7, 23.5],
+                    backgroundColor: [
+                        '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD'
+                    ],
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Italy\'s Export Structure by Sector (2024)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+
+        // Growth Projections Chart
+        const growthCtx = document.getElementById('growthProjections').getContext('2d');
+        new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024E', '2025F', '2026F'],
+                datasets: [
+                    {
+                        label: 'Italy GDP Growth (%)',
+                        data: [-9.0, 6.7, 3.7, 0.9, 0.8, 1.2, 1.4],
+                        borderColor: '#45B7D1',
+                        backgroundColor: 'rgba(69, 183, 209, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 6
+                    },
+                    {
+                        label: 'EU Average (%)',
+                        data: [-6.2, 5.4, 3.5, 0.5, 1.0, 1.8, 2.1],
+                        borderColor: '#96CEB4',
+                        backgroundColor: 'rgba(150, 206, 180, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 6
+                    },
+                    {
+                        label: 'Global Average (%)',
+                        data: [-3.1, 6.1, 3.4, 3.1, 3.2, 3.3, 3.4],
+                        borderColor: '#FFEAA7',
+                        backgroundColor: 'rgba(255, 234, 167, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Economic Growth Comparison: Italy, EU, and Global (2020-2026F)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: { padding: 20 }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(0,0,0,0.1)' },
+                        title: {
+                            display: true,
+                            text: 'GDP Growth Rate (%)'
+                        }
+                    },
+                    x: {
+                        grid: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Year (E=Estimate, F=Forecast)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
